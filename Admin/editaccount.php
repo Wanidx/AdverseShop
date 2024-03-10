@@ -17,7 +17,7 @@ if (!isset($_GET["member_id"]) || empty($_GET["member_id"])) {
 
 $member_id = mysqli_real_escape_string($con, $_GET['member_id']);
 
-$sql = "SELECT * FROM product WHERE ID_PRO ='$member_id' ";
+$sql = "SELECT * FROM account WHERE ID_ACC ='$member_id' ";
 $result = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error($con));
 $row = mysqli_fetch_array($result);
 
@@ -63,7 +63,6 @@ if (!$row) {
                         </ul>
                         <div class="d-flex">
                             <?php
-                            session_start();
 
                             if (!isset($_SESSION['username']) || !isset($_SESSION['role'])) {
                                 echo('<a href="../login.php" class="btn btn-warning me-3">LOGIN</a>');
@@ -79,8 +78,8 @@ if (!$row) {
     </header>
     <div class="container">
         <h2 class="mt-5 mb-4 text-center">แก้ไขข้อมูลสมาชิก</h2>
-        <form action="../Service/saveupdate.php" method="post" name="updateuser" id="updateuser">
-            <input type="hidden" name="ID_PRO" value="<?php echo $member_id; ?>" />
+        <form action="../Service/saveaccountupdate.php" method="post" name="updateuser" id="updateuser">
+            <input type="hidden" name="ID_ACC" value="<?php echo $member_id; ?>" />
             <div class="mb-3 row">
                 <label for="ID" class="col-sm-2 col-form-label">ID:</label>
                 <div class="col-sm-10">
@@ -88,21 +87,21 @@ if (!$row) {
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                <label for="name" class="col-sm-2 col-form-label">Username:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" value="<?=$row['name'];?>" required>
+                    <input type="text" class="form-control" id="username" name="username" value="<?=$row['username'];?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="price" class="col-sm-2 col-form-label">Price:</label>
+                <label for="price" class="col-sm-2 col-form-label">Password:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="price" name="price" value="<?=$row["price"];?>" required>
+                    <input type="text" class="form-control" id="password" name="password" value="<?=$row["password"];?>" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="detail" class="col-sm-2 col-form-label">Detail:</label>
+                <label for="detail" class="col-sm-2 col-form-label">Role:</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" id="detail" name="detail" rows="3" required><?=$row["detail"];?></textarea>
+                    <input type="text" class="form-control" id="role" name="role" value="<?=$row["role"];?>" required>
                 </div>
             </div>
             <div class="mb-3 row">

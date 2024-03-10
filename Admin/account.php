@@ -54,16 +54,12 @@
     </header>
 
     <div class="container">
-        <h1 class="mt-4 mb-4">Product List</h1>
-        <a href="addproduct.php" class="btn btn-success"> + Add more products</a><br><br>
+        <h1 class="mt-4 mb-4">Account List</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Detail</th>
+                    <th>Username</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -73,18 +69,15 @@
                 include('../Service/connection.php');
 
 
-                $query = "SELECT * FROM product";
+                $query = "SELECT * FROM account";
                 $result = mysqli_query($con, $query) or die("Error: " . mysqli_error($con));
 
                 while ($row = mysqli_fetch_array($result)) { 
                     echo "<tr>";
-                    echo "<td>" . $row["ID_PRO"] .  "</td> "; 
-                    echo "<td>" . $row["type"] .  "</td> ";  
-                    echo "<td>" . $row["name"] .  "</td> ";
-                    echo "<td>" . $row["price"] .  "</td> ";
-                    echo "<td>" . $row["detail"] .  "</td> ";
-                    echo "<td><a href='update.php?member_id=" . $row["ID_PRO"] . "' class='btn btn-warning'>Edit</a></td>";
-                    echo "<td><a href='../Service/delete.php?ID_PRO=" . $row["ID_PRO"] . "' class='btn btn-danger'>Delete</a></td>";
+                    echo "<td>" . $row["ID_ACC"] .  "</td> "; 
+                    echo "<td>" . $row["username"] .  "</td> ";  
+                    echo "<td><a href='editaccount.php?member_id=" . $row["ID_ACC"] . "' class='btn btn-warning'>Edit</a></td>";
+                    echo "<td><a href='../Service/accountdelete.php?ID_ACC=" . $row["ID_ACC"] . "' class='btn btn-danger'>Delete</a></td>";
                     echo "</tr>";
                 }
 

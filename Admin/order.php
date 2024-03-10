@@ -31,6 +31,9 @@
                                 <a class="nav-link" href="../index.php">HOME</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="account.php">ACCOUNT</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="order.php">ORDER</a>
                             </li>
                         </ul>
